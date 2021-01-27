@@ -4,8 +4,8 @@
         // Write a JavaScript function that iterates the integers from 1 to 100. For multiples of 3 print "TEK" instead of the number and for multiples of 5, print "camp." For numbers that are multiples of both 3 and 5, print "TEKcamp."
 
         
-        function tekCamp() {
-            for(var i = 1; i <=100; i++){
+        function tekCamp(nums) {
+            for(var i = 1; i <=nums; i++){
                 if(i % 3 == 0 && i % 5 == 0){
                     console.log("TEKcamp");
                 } else if (i % 5 == 0){
@@ -17,7 +17,7 @@
                 }
             }
         }
-        tekCamp();
+        tekCamp(100);
 
 
 
@@ -69,11 +69,29 @@
         // Write a function that converts a string to an array. It should return an array.  
 
         //your code...
-        function strToArr() {
-            return [];
+        function strToArr(str) {
+            var arr = str.split()
+            return arr;
         }
+        console.log(strToArr("This is a string"));
 
+        function strToArr1(str) {
+            var arr = [...str];
+            return arr;
+        }
+        console.log(strToArr1("This is a string"));
 
+        function strToArr2(str) {
+            var arr = Array.from(str);
+            return arr;
+        }
+        console.log(strToArr2("This is a string"));
+
+        function strToArr3(str){
+            var arr = Object.assign([], str);
+            return arr;
+        }
+        console.log(strToArr3("This is a string"));
 
 
 
@@ -84,9 +102,10 @@
 
         //your code...
         function reversePhone(number) {
-            
+            let revNum = number.toString().split('').reverse().join('');
+            return revNum;
         }
-
+        console.log(reversePhone(4109221098));
 
 
 
@@ -95,6 +114,11 @@
         // Write a function that returns a car object using some given info about your car. Required inputs are the make, model, year, and color.
 
         //your code...
+        function myCar(make, model, year, color){
+            var car = {make: make, model: model, color: color};
+            return car; 
+        }
+        console.log(myCar("Audi", "A3", "2015", "black"));
 
 
 
@@ -105,8 +129,22 @@
         // Write a function that accepts a list of numbers.  The function should identify each number as being even or odd.  The function should output a set of key value pairs, with the key being the number, and the value being the string "even" or "odd".
 
         //example : [10,23,3,4] => function() => {10 : 'even', 23 : 'odd', 3 : 'odd', 4 : 'even'}
-
-        //your code...
+//STILL INCORRECT!!!!!
+        function evenOdd(arr){
+            var evenOddObj = {};
+            for(var i = 0; i < arr.length; i ++){
+              
+                if (arr[i] % 2 == 0){
+                    console.log(arr[i] + " = " + "even");
+                    evenOddObj[arr[i]] = "even";
+                }else{
+                    console.log(arr[i] + " = " + "odd");
+                    evenOddObj[arr[i]] = "odd";
+                }
+            }
+            return evenOddObj;
+        }
+        console.log(evenOdd([10,23,3,4]));
 
 
 
@@ -117,17 +155,62 @@
         /************************************************************************************/
         const numbers = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ];
         // Write a "for" loop that console.log()'s the first value in the  array, and every 3rd number, i.e. 0, 3, 6, 9: the zeroth, third, sixth, and ninth values.
-
-        //your code...
+        for( let i = 0; i < numbers.length; i= i+3){
+            console.log(numbers[i]);          
+        }
+        
 
 
 
         /************************************************************************************/
         const foodArray = [ 'potatoes', 'tamales', 'lemon','strawberries','chocolate', 'pudding', {program : 'TEKcamp'} ];
         //access the value of the last element of the array and set it to a variable called school.  print the school variable to the console.
+     
+
+        foodArray[foodArray.length-1] = {program: 'school'};
+        console.log(Object.values(foodArray[foodArray.length-1]));
+        //console.log(foodArray);
+
+
+
+//!!!!Tekcamp is amazing not in the loop!!!
 
         const adjectiveArray = [ 'salty', 'spicy', 'sour', 'sweet', 'rich','creamy','amazing'];
         // Using both the foodArray and the adjectiveArray, write "for" loop that console.log()'s a sentence for each corresponding value in the arrays. Add the word "is" or "are" depending on if the food is singular or plural.  i.e. "Potatoes are salty", "Lemon is sour".
+        const foodArray = [ 'potatoes', 'tamales', 'lemon','strawberries','chocolate', 'pudding', {program : 'TEKcamp'} ];
+        console.log(`${foodArray[foodArray.length-1]['program']} is ${adjectiveArray[adjectiveArray.length-1]}`)
+        for(let i = 0; i < foodArray.length; i ++){
+            if(foodArray[i].endsWith('s')){
+                console.log(`${foodArray[i]} are ${adjectiveArray[i]}`);
+            }
+            else if (foodArray[i].typeOf ==='object'){
+                console.log(`${foodArray[i]['program']} is ${adjectiveArray[adjectiveArray.i]}`)
+                console.log("it's an object!!!")
+            }
+            else{
+                console.log(`${foodArray[i]} is ${adjectiveArray[i]}`);
+            }
+        }
+        console.log(`${foodArray[foodArray.length-1]['program']} is ${adjectiveArray[adjectiveArray.length-1]}`)
+        
+        const adjectiveArray = [ 'salty', 'spicy', 'sour', 'sweet', 'rich','creamy','amazing'];
+        // Using both the foodArray and the adjectiveArray, write "for" loop that console.log()'s a sentence for each corresponding value in the arrays. Add the word "is" or "are" depending on if the food is singular or plural.  i.e. "Potatoes are salty", "Lemon is sour".
+        const foodArray = [ 'potatoes', 'tamales', 'lemon','strawberries','chocolate', 'pudding', {program : 'TEKcamp'} ];
+        console.log(`${foodArray[foodArray.length-1]['program']} is ${adjectiveArray[adjectiveArray.length-1]}`)
+        
+        
+        const foodArray = [ 'potatoes', 'tamales', 'lemon','strawberries','chocolate', 'pudding', {program : 'TEKcamp'} ];
+        const adjectiveArray = [ 'salty', 'spicy', 'sour', 'sweet', 'rich','creamy','amazing'];
+        foodArray.forEach(( num1, index) =>{
+            const num2 = adjectiveArray[index];
+            if(typeof num1 === 'object'){
+                console.log(`${num1.program} is ${num2}`);
+            } else if(num1.endsWith('s')){
+                console.log(`${num1} are ${num2}`);
+            }else{
+                console.log(`${num1} is ${num2}`);
+            }
+        });
 
 
         /************************************************************* */
@@ -135,12 +218,16 @@
 
 
         for(let i=0; i<10; i++) {
-            // console.log(" the value of i in the loop is : " + i);
+            console.log(" the value of i in the loop is : " + i);
         }
 
 
         //your code...
-
+        let i = 0;
+        while( i < 10){
+            console.log(" the value of i in the loop is : " + i);
+            i++;
+        }
 
 
 
@@ -149,7 +236,28 @@
         //use javascript to compute the value of the above statement. Each individual operation needs to be a function expression. run all the functions after defining them, and print the answer to the console.
 
         //your code...
+     
+        const d = Math.pow(10,2)
+        
+        const add = function(a, b){
+            return a + b;
+        }
+        const sum = add(30,2);
+        console.log(sum);
 
+        const multiply = function(c,d){
+            return c * d;
+        }
+        const product = multiply(sum, 20);
+        console.log(product);
+
+        const divide = function(e,f){
+            return e/f;
+        }
+        const result = divide(product,Math.pow(10,2));
+        console.log(result);
+
+        
 
         /************************************************************* */
         //Determine whether the following values are "truthy" or "falsy".  console.log() the value, whether the value is 'truthy' or 'falsy', along with your reasoning why using String interpolation values : 
@@ -177,10 +285,15 @@
 
         const day = "friday";
 
+        switch(day){
+            case 'monday':
+                console.log("we got a long week ahead of us...");
+        }
+
         if(day === "monday") {
             console.log("we got a long week ahead of us...");
         } else if(day === "tuesday") {
-            console.log("tuesday's are still beterr than mondays, but LONG way to go still");
+            console.log("tuesday's are still better than mondays, but LONG way to go still");
         } else if (day === "wednesday") {
             console.log("We are smack dab in the middle of the week");
         } else if (day === "thursday") {
