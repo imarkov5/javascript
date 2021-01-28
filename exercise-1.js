@@ -129,16 +129,16 @@
         // Write a function that accepts a list of numbers.  The function should identify each number as being even or odd.  The function should output a set of key value pairs, with the key being the number, and the value being the string "even" or "odd".
 
         //example : [10,23,3,4] => function() => {10 : 'even', 23 : 'odd', 3 : 'odd', 4 : 'even'}
-//STILL INCORRECT!!!!!
+
         function evenOdd(arr){
             var evenOddObj = {};
             for(var i = 0; i < arr.length; i ++){
               
                 if (arr[i] % 2 == 0){
-                    console.log(arr[i] + " = " + "even");
+                    //console.log(arr[i] + " = " + "even");
                     evenOddObj[arr[i]] = "even";
                 }else{
-                    console.log(arr[i] + " = " + "odd");
+                    //console.log(arr[i] + " = " + "odd");
                     evenOddObj[arr[i]] = "odd";
                 }
             }
@@ -171,36 +171,10 @@
         console.log(Object.values(foodArray[foodArray.length-1]));
         //console.log(foodArray);
 
-
-
-//!!!!Tekcamp is amazing not in the loop!!!
-
         const adjectiveArray = [ 'salty', 'spicy', 'sour', 'sweet', 'rich','creamy','amazing'];
         // Using both the foodArray and the adjectiveArray, write "for" loop that console.log()'s a sentence for each corresponding value in the arrays. Add the word "is" or "are" depending on if the food is singular or plural.  i.e. "Potatoes are salty", "Lemon is sour".
-        const foodArray = [ 'potatoes', 'tamales', 'lemon','strawberries','chocolate', 'pudding', {program : 'TEKcamp'} ];
-        console.log(`${foodArray[foodArray.length-1]['program']} is ${adjectiveArray[adjectiveArray.length-1]}`)
-        for(let i = 0; i < foodArray.length; i ++){
-            if(foodArray[i].endsWith('s')){
-                console.log(`${foodArray[i]} are ${adjectiveArray[i]}`);
-            }
-            else if (foodArray[i].typeOf ==='object'){
-                console.log(`${foodArray[i]['program']} is ${adjectiveArray[adjectiveArray.i]}`)
-                console.log("it's an object!!!")
-            }
-            else{
-                console.log(`${foodArray[i]} is ${adjectiveArray[i]}`);
-            }
-        }
-        console.log(`${foodArray[foodArray.length-1]['program']} is ${adjectiveArray[adjectiveArray.length-1]}`)
         
-        const adjectiveArray = [ 'salty', 'spicy', 'sour', 'sweet', 'rich','creamy','amazing'];
-        // Using both the foodArray and the adjectiveArray, write "for" loop that console.log()'s a sentence for each corresponding value in the arrays. Add the word "is" or "are" depending on if the food is singular or plural.  i.e. "Potatoes are salty", "Lemon is sour".
-        const foodArray = [ 'potatoes', 'tamales', 'lemon','strawberries','chocolate', 'pudding', {program : 'TEKcamp'} ];
-        console.log(`${foodArray[foodArray.length-1]['program']} is ${adjectiveArray[adjectiveArray.length-1]}`)
-        
-        
-        const foodArray = [ 'potatoes', 'tamales', 'lemon','strawberries','chocolate', 'pudding', {program : 'TEKcamp'} ];
-        const adjectiveArray = [ 'salty', 'spicy', 'sour', 'sweet', 'rich','creamy','amazing'];
+
         foodArray.forEach(( num1, index) =>{
             const num2 = adjectiveArray[index];
             if(typeof num1 === 'object'){
@@ -265,17 +239,33 @@
         // ex : 3 is truthy, because it is a number, and numbers are type coerced as 'true' when performing logical (boolean) operations.
 
         // 20
+        console.log(`The value is truthy, because 20 is a number, and numbers are type coerced as ${Boolean(20)} when performing logical (boolean) operations`);
+        
         // 0
+        console.log(`The value is falsy, because zero is type coerced as ${Boolean(0)} when performing logical (boolean) operations`);
+
         // "zero";
-        // const zero = 20;
+        console.log(`The value is truthy, because "zero" is a string, and strings are type coerced as ${Boolean("zero")} when performing logical (boolean) operations`);
+
+        const zero = 20;
+        console.log(`The value is truthy, because zero variable contains 20, which is a number, and numbers are type coerced as ${Boolean(zero)} when performing logical (boolean) operations`);
+
         // null
+        console.log(`The value is falsy, because null is type coerced as ${Boolean(null)} when performing logical (boolean) operations`);
         // "0"
+        console.log(`The value is truthy, because "0" is a string and strings are type coerced as ${Boolean("0")} when performing logical (boolean) operations`);
         // !""
+        console.log(`The value is truthy, because !"" means not an empty string, and because an empty string is falsy then !"" is truthy, so it is going to be as ${Boolean(!"")} when performing logical (boolean) operations`);
         // {}
-        // () => {console.log("hello TEKcamp!");
+        console.log(`The {} are truthy, because objects are always ${Boolean({})}`);
+        // () => console.log("hello TEKcamp!");
+        console.log(`The value is truthy, because it is a function, and functions are type coerced as ${Boolean(() => console.log("hello TEKcamp!"))} when performing logical (boolean) operations`);
         // 125
+        console.log(`The value is truthy, because 125 is a number, and numbers are type coerced as ${Boolean(125)} when performing logical (boolean) operations`);
         // undefined
+        console.log(`The value is falsy, because undefined is type coerced as ${Boolean(undefined)} when performing logical (boolean) operations`);
         // ""
+        console.log(`The value is falsy, because "" is an empty string, and they are type coerced as ${Boolean("")} when performing logical (boolean) operations`);
 
 
 
@@ -283,11 +273,28 @@
         /************************************************************* */
         // Refactor the following code using a switch statement:
 
-        const day = "friday";
+        const day = "saturday";
 
         switch(day){
             case 'monday':
                 console.log("we got a long week ahead of us...");
+                break;
+            case 'tuesday':
+                console.log("tuesday's are still better than mondays, but LONG way to go still");
+                break;
+            case 'wednesday':
+                console.log("We are smack dab in the middle of the week");
+                break;
+            case 'thursday':
+                console.log("Thursday night... the mood is right");
+                break;
+            case 'friday':
+                console.log("TGIF.  Friday truly is the best day of the week!");
+                break;
+            case 'saturday':
+            case 'sunday':
+                console.log("It's a weekend!")
+                break;              
         }
 
         if(day === "monday") {
@@ -309,14 +316,23 @@
         /************************************************************* */
         // Refactor the following statements to use ternary expressions:
 
-        const age = 10;
+        const age = 66;
+        
+        age > 21 ? console.log("adult") : console.log("minor");
+
+        age > 13 && age < 19 ? console.log('teen') : console.log("not a teenager");
+
+        age > 65 ? console.log("retired") : console.log("still working...");
+
+        
+        
         if (age > 21) console.log("adult"); else {
             console.log("minor");
         }
 
         if (age > 13 && age < 19) console.log('teen'); else {
             console.log("not a teenager");
-        };
+        }
 
         if (age > 65) console.log("retired"); else {
             console.log("still working...");
@@ -333,48 +349,81 @@
         -hobbies
         -profession
         -education
+        
 
         -add a method on your object, entitled 'learn'.  The learn method should print out the message : "[your name] is learning JavaScript".  The learn method should print the value of the name property using the 'this' keyword.
 
-        -add another method on your object of any action you want to perform, using some property that exists on your object.  Make sure to reference any properties on your objedct using the 'this' keyword.
+        -add another method on your object of any action you want to perform, using some property that exists on your object.  Make sure to reference any properties on your object using the 'this' keyword.
         */
 
         //your code...
+    
+        let myInfo = {
+            name: 'Irina',
+            age: 17,
+            gender: 'female',
+            healthy: 'yes',
+            hobbies: 'yoga',
+            profession: 'manager',
+            education: 'Management Information Systems',
+            learn: function(){
+                console.log(this.name + " is learning JavaScript");
+            },
+            likes: function(){
+                console.log(this.name + " likes " + this.hobbies);
+            }
+
+        };
+
+        myInfo.learn();
+        myInfo.likes();
 
 
 
         /************************************************************* */
 
-        {
+        
             const year = 2021;
             const nums = [1,2,3,4,5];
             let sum = 0;
             let i = 0;
-            const doubled = [];
+            //const doubled = [];
+            
 
             //Refactor the following statements into expressions
 
 
             // 1.
-            if(year > 2000 && year < 2100) {
-                console.log("welcome to the 21st century");
-            }
+            // if(year > 2000 && year < 2100) {
+            //     console.log("welcome to the 21st century");
+            // }
             
+            year > 2000 && year < 2100 && console.log("welcome to the 21st century");
+
             // 2.
-            for(let i=0; i<nums.length; i++) {
-                sum += nums[i];
-            }
+            sum = nums.reduce(function(accumulator, val){
+                return accumulator + val;
+            });
             console.log(sum);
+            // for(let i=0; i<nums.length; i++) {
+            //     sum += nums[i];
+            // }
+            // console.log(sum);
+            const array1 = [1, 2, 3, 4];
+
             
+            // 3.   
+            const doubled = nums.map(x => x*2);
+            console.log(doubled); 
             
-            // 3.
-            while(i < nums.length) {
-                doubled.push(nums[i]*2);
-                i++;
-            }
+
+            // while(i < nums.length) {
+            //     doubled.push(nums[i]*2);
+            //     i++;
+            // }
             
-            console.log(doubled);
-        }
+            // console.log(doubled);
+        
 
 
         /************************************************************* */
@@ -382,17 +431,21 @@
 
         const nums = [1,2,3,4,5];
         // Square every number in the array.  Store the squares in a new array.
-
+        
         //your code...
-
+        const squares = nums.map(x => x*x);
+        console.log(squares);
 
 
 
 
         const fivePlus = [1,3,5,7,9,1,3,5,2,3,1,23,4,232,3,4,1,2,2,2,3,4,4,1,12,11,23,3,4,5];
         //Remove all numbers that are less than 5.  Store the results in a new array.
-
+        
         //your code...
+        const isBelowFive = fivePlus.filter(num => num < 5);
+        console.log(isBelowFive);
+
 
 
 
@@ -400,16 +453,22 @@
 
 
         // Create an array of 20 randomly generated integers.  Calculate the sum of the elements in the array.
-
+        
         //your code...
 
-
+        const arrayLength = 20;
+        const nums = Array.from(Array(arrayLength)).map(x=>Math.floor(Math.random() * (9) + 1));
+        console.log(nums);
+        const sum = nums.reduce(function(accumulator, val){
+            return accumulator + val;
+        });
+        console.log(sum);
 
 
 
         const showNums = [12,22,33,44,55,66,77,88,99,101];
         //Print out the value of each number divided by 2.  There is no need to store the output in an array.
-
+        showNums.forEach(x => console.log(x/2));
 
 
         /************************************************************* */
@@ -425,10 +484,32 @@
         ['android'] => chessCalc() => null
 
         */
-
+        let totalPieces = 0;
         function chessCalc(pieces) {
             //your code here
+            for( let i = 0; i < pieces.length; i++){
+                if(pieces[i] == 'pawn'){
+                    totalPieces += 1;
+                } else if(pieces[i] == 'rook'){
+                    totalPieces += 5;
+                } else if(pieces[i] == 'bishop'){
+                    totalPieces += 3;
+                } else if(pieces[i] == 'knight'){
+                    totalPieces += 3;
+                } else if(pieces[i] == 'queen'){
+                    totalPieces += 9;
+                } else if(pieces[i] == 'king'){
+                    totalPieces += 0;
+                //}if (pieces.length == 1 && pieces[i] != 'pawn' && pieces[i] != 'rook' && pieces[i] != 'bishop' && pieces[i] != 'knight' && pieces[i] != 'queen' && pieces[i] != 'king') {
+                }else if (pieces.length == 1 && pieces[i] != 'pawn'&& 'rook' && 'bishop' && 'knight' && 'queen' && 'king') {
+                    return null;
+                }
+            }
+            return totalPieces;
         }
+        console.log(chessCalc(['king','queen','pawn','pawn','pawn','bishop', 'kkk', 'xxx']));
+        console.log(chessCalc(['kkk']));
+
 
 
 
@@ -437,6 +518,7 @@
 
         const ones = [1,11,111,1111,11111,111111,1111111,11111111,111111111,1111111111];
         //reverse the array, without modifying / `mutating` the ones array.
+        console.log(ones.reverse());
 
 
 
@@ -445,7 +527,12 @@
 
         function performer(cb) {
             //code goes here
+            //console.log("function performer");
+            cb();
         }
+        performer(function(){
+            console.log("Callback!")
+        });
 
 
         /************************************************************* */
@@ -512,59 +599,69 @@
                 "tech_stack" : null
             },
         ];
-
+        
+        devs.forEach(element => console.log(`${element.name} specializes in ${element.tech_stack}`));
         /************************** */  
         // Find all devs older than 24
-
+       
+        
         //your code here...
-
+        let olderThan = devs.filter(person => person.age > 24);
+        console.log(olderThan);
 
 
         /************************** */  
         // Remove all people who are not developers (i.e. no tech stack)
-
+        
         //your code here...
-
+        let notDevs = devs.filter(person => person.tech_stack !== null);
+        console.log(notDevs);
 
 
         /************************** */  
         // Calculate the total age of all the devs
 
         //your code here...
-
+        
+        let totalAge = devs.reduce((accumulator, val) => accumulator + current.age, 0);
+        console.log(totalAge);
 
 
         /************************** */  
         // Find all female devs
 
         //your code here...
-
+        let females = devs.filter(person => person.gender == 'f' || person.gender == 'F');
+        console.log(females);
 
         /************************** */  
         // lowercase the genders of every dev
 
         //your code here...
 
-
+        let lowerCase = devs.map(person => person.gender.toLowerCase());
+        console.log(lowerCase);
 
         /************************** */  
         // Sort the developers by name
 
         //your code here
-
+        let sortedByName = devs.sort((a, b) => (a.name > b.name) ? 1: -1);
+        console.log(sortedByName)
 
         /************************** */  
         // Sort the devs by age in descending order
 
         //your code here
-
+        let sortedByAge = devs.sort((a, b) => (a.age < b.age) ? 1: -1);
+        console.log(sortedByAge);
 
 
         /************************** */  
         // Sort the male coders by age
 
         //your code here
-
+        console.log(devs.sort((a, b) => b.age - a.age).filter(person => person.gender === 'm' || person.gender === 'M'));
 
         /************************** */  
         // For the list of devs, print out sentences including the name and tech stack of each dev, leaving out other information.  Example output is provided below : 
@@ -576,7 +673,7 @@
         */
 
         //your code here
-
+        devs.forEach(element => console.log(element));
 
         /************************************************************* */
         // Write a function to find the maximum numerical value of the given array.  Get rid of any non numerical values.  Convert the strings that are numbers to an actual number data type.  ("one" => 1) ("1" => 1).  Use array methods to perform this task.  
@@ -609,6 +706,13 @@
         mapObj.set({company : "TEKsystems"},"object");
 
         console.log(mapObj.has({company : "TEKsystems"}));
+
+
+
+        ///////
+        const mapObj = new Map();
+        mapObj.set("company", "TEKsystems")
+        console.log(mapObj.has("company"))
 
         //The above console.log() statmeent returns false.  Write another console.log() statement explaining why this line of code prints false.  Refactor the code `mapObj.set()`, so the code : `mapObj.has() returns true.  The goal is to successfully check and see if {company : "TEKsystems"} exists in the mapObj.
 
