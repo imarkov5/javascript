@@ -600,7 +600,14 @@
             },
         ];
         
-        devs.forEach(element => console.log(`${element.name} specializes in ${element.tech_stack}`));
+        for(let person in devs){
+            if(person.tech_stack === null){
+                devs.forEach(element => console.log(`${element.name} is not a developer`))
+            } else{
+                devs.forEach(element => console.log(`${element.name} specializes in ${element.tech_stack}`));
+            }
+        }
+        
         /************************** */  
         // Find all devs older than 24
        
@@ -671,9 +678,18 @@
         Chris specializes in React, Express, and Python.
         Dr. Patel is not a developer.
         */
+       
 
-        //your code here
-        devs.forEach(element => console.log(element));
+        //your code here ??????? NOt WORKING!
+        for(let person in devs){
+            if(person.tech_stack === null){
+                devs.forEach(element => console.log(`${element.name} is not a developer`))
+            } else{
+                devs.forEach(element => console.log(`${element.name} specializes in ${element.tech_stack}`));
+            }
+        }
+        
+        
 
         /************************************************************* */
         // Write a function to find the maximum numerical value of the given array.  Get rid of any non numerical values.  Convert the strings that are numbers to an actual number data type.  ("one" => 1) ("1" => 1).  Use array methods to perform this task.  
