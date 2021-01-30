@@ -600,14 +600,10 @@
             },
         ];
         
-        for(let person in devs){
-            if(person.tech_stack === null){
-                devs.forEach(element => console.log(`${element.name} is not a developer`))
-            } else{
-                devs.forEach(element => console.log(`${element.name} specializes in ${element.tech_stack}`));
-            }
-        }
         
+        
+        
+
         /************************** */  
         // Find all devs older than 24
        
@@ -646,7 +642,7 @@
 
         //your code here...
 
-        let lowerCase = devs.map(person => person.gender.toLowerCase());
+        let lowerCase = devs.filter(person => person.gender = person.gender.toLowerCase());
         console.log(lowerCase);
 
         /************************** */  
@@ -680,38 +676,69 @@
         */
        
 
-        //your code here ??????? NOt WORKING!
-        for(let person in devs){
-            if(person.tech_stack === null){
-                devs.forEach(element => console.log(`${element.name} is not a developer`))
-            } else{
-                devs.forEach(element => console.log(`${element.name} specializes in ${element.tech_stack}`));
+        //your code here
+        devs.forEach((person) => {
+            let sentence = "";
+            sentence += person.name;
+            if(person.tech_stack !== null){
+                sentence += " specializes in " + person.tech_stack.join(", ") + ".";
+            }else{
+                sentence += " is not a developer.";
             }
-        }
+            console.log(sentence);
+        })
         
         
 
         /************************************************************* */
         // Write a function to find the maximum numerical value of the given array.  Get rid of any non numerical values.  Convert the strings that are numbers to an actual number data type.  ("one" => 1) ("1" => 1).  Use array methods to perform this task.  
-        const numbersMixed = [2,23,1,2,1,1,1,2,2.5,20,200,2000,,{k:"val"},20000,19999,1878,140,23,4,"sk",true,true,"true-dat","nice","one","two","three","3","tea",[]];
-
+        const numbersMixed = [2,23,1,2,1,1,1,2,2.5,20,200,2000,{k:"val"},20000,19999,1878,140,23,4,"sk",true,true,"true-dat","nice","one","two","three","3","tea",[]];
+        let max = 0;
+        const arrNum = [];
         function maxNumber(numbers) {
-            //your code...
+            for(let i = 0; i < numbers.length; i++){
+                if(typeof numbers[i] == "string"){
+                    if(numbers[i] == "one"){
+                        arrNum.push(1);
+                    } else if(numbers[i] == "two"){
+                        arrNum.push(2);
+                    } else if(numbers[i] == "three"){
+                        arrNum.push(3);
+                    } else if(numbers[i] === '3'){
+                        arrNum.push(Number(numbers[i]));
+                    }
+                }
+                if(typeof numbers[i] == "number"){
+                    arrNum.push(numbers[i]);
+                }   
+            }
+            for(let x = 0; x < arrNum.length; x++){
+                if(arrNum[x] > max){
+                    max = arrNum[x];
+                }
+            }
+            console.log(`The maximum numerical number in the array is ${max}`);
+            return arrNum;
         }
+        console.log(maxNumber(numbersMixed))
+
 
         //After the numbers array has been cleaned up to only have numbers in it, Write a function that sorts the modified numbers array.  Allow the function to sort the array in descending order as well.
 
         function sortNums(numbers,desc=false) {
-            //your code...
+            numbers.sort(function(a,b){return b-a});
+            return numbers;
         };
+        const sortedArray = sortNums(arrNum);
+        console.log(sortedArray);
 
 
 
         /************************************************************* */
         //Research a new feature of ES6+ and create an example of it's use case here.  Be sure to write comments explaining what the feature is and why it is useful.
 
-
-            //your code...
+            //Answer: One of the new features of ES7 is includes(). This method determines whether an array includes a certain value among its entries, returning true or false.
+        console.log(sortedArray.includes(20000, 0));
 
 
 
@@ -720,30 +747,57 @@
 
         const mapObj = new Map();
         mapObj.set({company : "TEKsystems"},"object");
-
+        mapObj.set("number", 1);
+        mapObj.set("string", "Some string");
+        mapObj.set("boolean", true);
+        mapObj.set("array", [1,2,3,"TEKcamp", false]);
+        mapObj.set("undefined", undefined);
+        
+        
         console.log(mapObj.has({company : "TEKsystems"}));
 
 
 
-        ///////
-        const mapObj = new Map();
-        mapObj.set("company", "TEKsystems")
-        console.log(mapObj.has("company"))
-
-        //The above console.log() statmeent returns false.  Write another console.log() statement explaining why this line of code prints false.  Refactor the code `mapObj.set()`, so the code : `mapObj.has() returns true.  The goal is to successfully check and see if {company : "TEKsystems"} exists in the mapObj.
+        //The above console.log() statement returns false.  Write another console.log() statement explaining why this line of code prints false.  Refactor the code `mapObj.set()`, so the code : `mapObj.has() returns true.  The goal is to successfully check and see if {company : "TEKsystems"} exists in the mapObj.
 
         //your code...
-
+        const mapObj1 = new Map();
+        mapObj1.set("object", {company : "TEKsystems"});
+        console.log(mapObj1.has("object")); 
+        console.log("It wasn't set right before. First one should be a key, and second one is the value.");
 
         //loop through the mapObj and create a new array of only the data types, leaving out the example keys of the mapObj.  Use array methods to do this.  Example output : ['string',number','boolean',array','object']
+        const mapObj2 = new Map();
+        mapObj2.set("object", {company : "TEKsystems"});
+        mapObj2.set("number", 1);
+        mapObj2.set("string", "Some string");
+        mapObj2.set("boolean", true);
+        mapObj2.set("array", [1,2,3,"TEKcamp", false]);
+        mapObj2.set("undefined", undefined);
+        let arr = [];
+        const iterator = mapObj2.keys();
+        for(let i = 0; i < mapObj2.size; i++){
+            arr.push(iterator.next().value);
+        }
+        console.log(arr);
 
 
         /************************************************************* */
-        //Create 4 mathematical function expressions, add,subtract,multiply,divide.  put them in an array, and create a doMath() function that randomly selects one of the mathematical operations whenever it is invoked.  The doMath() function should print to the console the mathetmatical function that was carried out.  The doMath() function should return the computed value of any operation performed.
+        //Create 4 mathematical function expressions, add,subtract,multiply,divide.  put them in an array, and create a doMath() function that randomly selects one of the mathematical operations whenever it is invoked.  The doMath() function should print to the console the mathematical function that was carried out.  The doMath() function should return the computed value of any operation performed.
 
         // ex : 2,3 => doMath(2,3) => adding : 5
-        const operations = [];
-        function doMath(x,y) {};
+        const operations = [
+            function(x,y){return x+y},
+            function(x,y){return x-y},
+            function(x,y){return x*y},
+            function(x,y){return x/y}
+        ];
+       
+        
+        function doMath(x,y){
+            return operations[Math.floor(Math.random() * operations.length)](x,y);
+        }
+        console.log(doMath(6,3));
 
         //your code...
 
@@ -752,17 +806,37 @@
         /************************************************************* */
         //- Create a Higher Order Function called multiple(x) that takes a single parameter.  This HOF should return another function fn(y) that accepts another single parameter y.  This inner function should compute the product of it's parameter with the parameter passed into multiple.  Use this returned "first-class" function to compute triples of any given number.
 
-        //your code...
+        function multiple(x){
+            return function(y){
+                return x*y;
+            }
+        }
+        const mults = multiple(2);
+        const product = mults(5);
+        const triples = product * 3;
+        console.log(triples);
 
 
-        //- Write an outer function called stockGain that has cost basis (basis) as a parameter; declare a variable called message that holds " is how much the stock has increased".  Return an inner function with years (yrs) as a parameter and declare a variable for growth rate (r) of 5%. Console log your calculation.
 
-        //your code
-
-
+        //- Write an outer function called stockGain that has cost basis (basis) as a parameter; declare a variable called message that holds "is how much the stock has increased".  Return an inner function with years (yrs) as a parameter and declare a variable for growth rate (r) of 5%. Console log your calculation.
         // Once finished, declare a variable called futureValue that holds your stockGain function and enter any amount for the cost basis and a number for the number of years.  Run the function returned by the higher order function to display the future value of the stock.  
-
-        //your code...
+        
+        
+        //compound interest formula: A = basis(1 + r)^t
+        
+        
+        function stockGain(basis){
+            const message = "is how much the stock has increased."
+            return function(yrs){
+                const r = 0.05;
+                const compIntAmount = (basis*Math.pow((1 + r),yrs)).toFixed(2)
+                console.log(`$${compIntAmount} ${message}`);
+                return compIntAmount;
+            }
+        }
+        const futureValue = stockGain(5000);
+        const compInterestAmount = futureValue(5);
+        console.log(compInterestAmount);
 
 
 
@@ -774,6 +848,4 @@ module.exports = {
 
 
 //*************************************** */
-
-
 
