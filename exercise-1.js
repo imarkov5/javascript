@@ -5,7 +5,7 @@
 
         
         function tekCamp(nums) {
-            for(var i = 1; i <=nums; i++){
+            for(let i = 1; i <=nums; i++){
                 if(i % 3 == 0 && i % 5 == 0){
                     console.log("TEKcamp");
                 } else if (i % 5 == 0){
@@ -57,7 +57,8 @@
             }
             return false;
         }
-        console.log(canVote(18));
+        console.log(canVote(8));
+        console.log(canVote(20));
 
 
 
@@ -70,28 +71,28 @@
 
         //your code...
         function strToArr(str) {
-            var arr = str.split()
+            let arr = str.trim().split(" ")
             return arr;
         }
         console.log(strToArr("This is a string"));
 
         function strToArr1(str) {
-            var arr = [...str];
-            return arr;
+            let arr1 = [...str];
+            return arr1;
         }
-        console.log(strToArr1("This is a string"));
+        console.log(strToArr1("This is another string"));
 
         function strToArr2(str) {
-            var arr = Array.from(str);
-            return arr;
+            let arr2 = Array.from(str);
+            return arr2;
         }
-        console.log(strToArr2("This is a string"));
+        console.log(strToArr2("This is one more string"));
 
         function strToArr3(str){
-            var arr = Object.assign([], str);
-            return arr;
+            var arr3 = Object.assign([], str);
+            return arr3;
         }
-        console.log(strToArr3("This is a string"));
+        console.log(strToArr3("This is the last string for this assignment"));
 
 
 
@@ -105,7 +106,7 @@
             let revNum = number.toString().split('').reverse().join('');
             return revNum;
         }
-        console.log(reversePhone(4109221098));
+        console.log(reversePhone(4109561098));
 
 
 
@@ -115,10 +116,15 @@
 
         //your code...
         function myCar(make, model, year, color){
-            var car = {make: make, model: model, color: color};
-            return car; 
+            const carObj = {
+                make: make,
+                model: model,
+                year: year,
+                color: color};
+            return carObj; 
         }
-        console.log(myCar("Audi", "A3", "2015", "black"));
+        const car = myCar("Audi", "A3", "2015", "black")
+        console.log(car);
 
 
 
@@ -131,14 +137,12 @@
         //example : [10,23,3,4] => function() => {10 : 'even', 23 : 'odd', 3 : 'odd', 4 : 'even'}
 
         function evenOdd(arr){
-            var evenOddObj = {};
-            for(var i = 0; i < arr.length; i ++){
+            let evenOddObj = {};
+            for(let i = 0; i < arr.length; i ++){
               
                 if (arr[i] % 2 == 0){
-                    //console.log(arr[i] + " = " + "even");
                     evenOddObj[arr[i]] = "even";
                 }else{
-                    //console.log(arr[i] + " = " + "odd");
                     evenOddObj[arr[i]] = "odd";
                 }
             }
@@ -158,7 +162,6 @@
         for( let i = 0; i < numbers.length; i= i+3){
             console.log(numbers[i]);          
         }
-        
 
 
 
@@ -169,7 +172,7 @@
 
         foodArray[foodArray.length-1] = {program: 'school'};
         console.log(Object.values(foodArray[foodArray.length-1]));
-        //console.log(foodArray);
+        
 
         const adjectiveArray = [ 'salty', 'spicy', 'sour', 'sweet', 'rich','creamy','amazing'];
         // Using both the foodArray and the adjectiveArray, write "for" loop that console.log()'s a sentence for each corresponding value in the arrays. Add the word "is" or "are" depending on if the food is singular or plural.  i.e. "Potatoes are salty", "Lemon is sour".
@@ -217,13 +220,13 @@
             return a + b;
         }
         const sum = add(30,2);
-        console.log(sum);
+        //console.log(sum);
 
         const multiply = function(c,d){
             return c * d;
         }
         const product = multiply(sum, 20);
-        console.log(product);
+        //console.log(product);
 
         const divide = function(e,f){
             return e/f;
@@ -367,10 +370,10 @@
             profession: 'manager',
             education: 'Management Information Systems',
             learn: function(){
-                console.log(this.name + " is learning JavaScript");
+                console.log(this.name + " is learning JavaScript.");
             },
             likes: function(){
-                console.log(this.name + " likes " + this.hobbies);
+                console.log(this.name + " likes " + this.hobbies + ".");
             }
 
         };
@@ -399,6 +402,8 @@
             // }
             
             year > 2000 && year < 2100 && console.log("welcome to the 21st century");
+            //or
+            year > 2000 && year < 2100 ? console.log("Welcome to the 21st century"): console.log("Not 21st century:(")
 
             // 2.
             sum = nums.reduce(function(accumulator, val){
@@ -500,16 +505,17 @@
                     totalPieces += 9;
                 } else if(pieces[i] == 'king'){
                     totalPieces += 0;
-                //}if (pieces.length == 1 && pieces[i] != 'pawn' && pieces[i] != 'rook' && pieces[i] != 'bishop' && pieces[i] != 'knight' && pieces[i] != 'queen' && pieces[i] != 'king') {
-                }else if (pieces.length == 1 && pieces[i] != 'pawn'&& 'rook' && 'bishop' && 'knight' && 'queen' && 'king') {
-                    return null;
-                }
+                }else if (pieces[i] != 'pawn' && 'rook' && 'bishop' && 'knight' && 'queen' && 'king') {
+                    if(pieces.length == 1){
+                        totalPieces = null;
+                    }
+                } 
             }
             return totalPieces;
         }
         console.log(chessCalc(['king','queen','pawn','pawn','pawn','bishop', 'kkk', 'xxx']));
-        console.log(chessCalc(['kkk']));
-
+        //console.log(chessCalc(['bishop']));
+        //console.log(chessCalc(['android']));
 
 
 
@@ -518,7 +524,12 @@
 
         const ones = [1,11,111,1111,11111,111111,1111111,11111111,111111111,1111111111];
         //reverse the array, without modifying / `mutating` the ones array.
-        console.log(ones.reverse());
+        
+        const newArray = ones.slice().reverse();
+
+        console.log(newArray);
+        console.log(ones);
+        
 
 
 
@@ -526,8 +537,6 @@
         //create a function called performer(cb) that takes in a callback function and runs that callback function.  The function should return the output of the callback function.
 
         function performer(cb) {
-            //code goes here
-            //console.log("function performer");
             cb();
         }
         performer(function(){
@@ -599,10 +608,8 @@
                 "tech_stack" : null
             },
         ];
-        
-        
-        
-        
+   
+       
 
         /************************** */  
         // Find all devs older than 24
@@ -617,8 +624,8 @@
         // Remove all people who are not developers (i.e. no tech stack)
         
         //your code here...
-        let notDevs = devs.filter(person => person.tech_stack !== null);
-        console.log(notDevs);
+        let onlyDevs = devs.filter(person => person.tech_stack !== null);
+        console.log(onlyDevs);
 
 
         /************************** */  
@@ -626,7 +633,7 @@
 
         //your code here...
         
-        let totalAge = devs.reduce((accumulator, val) => accumulator + current.age, 0);
+        let totalAge = devs.reduce((accumulator, person) => accumulator + person.age, 0);
         console.log(totalAge);
 
 
@@ -728,7 +735,7 @@
         function sortNums(numbers,desc=false) {
             numbers.sort(function(a,b){return b-a});
             return numbers;
-        };
+        }
         const sortedArray = sortNums(arrNum);
         console.log(sortedArray);
 
@@ -737,7 +744,7 @@
         /************************************************************* */
         //Research a new feature of ES6+ and create an example of it's use case here.  Be sure to write comments explaining what the feature is and why it is useful.
 
-            //Answer: One of the new features of ES7 is includes(). This method determines whether an array includes a certain value among its entries, returning true or false.
+        console.log("Answer: One of the new features of ES7 is includes(). This method determines whether an array includes a certain value among its entries, returning true or false.")
         console.log(sortedArray.includes(20000, 0));
 
 
@@ -791,15 +798,22 @@
             function(x,y){return x-y},
             function(x,y){return x*y},
             function(x,y){return x/y}
-        ];
-       
-        
+        ]; 
         function doMath(x,y){
-            return operations[Math.floor(Math.random() * operations.length)](x,y);
+            const idx = Math.floor(Math.random()* operations.length);
+            if(idx == 0){
+                console.log("x + y");
+            }else if(idx == 1){
+                console.log("x - y");
+            }else if(idx == 2){
+                console.log("x * y");
+            }else{
+                console.log("x / y")
+            }
+            const result = operations[idx](x,y);
+            return result;
         }
-        console.log(doMath(6,3));
-
-        //your code...
+        console.log(doMath(10,5));
 
 
 
