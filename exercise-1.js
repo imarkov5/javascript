@@ -294,8 +294,7 @@
             case 'friday':
                 console.log("TGIF.  Friday truly is the best day of the week!");
                 break;
-            case 'saturday':
-            case 'sunday':
+            default:
                 console.log("It's a weekend!")
                 break;              
         }
@@ -448,14 +447,10 @@
         //Remove all numbers that are less than 5.  Store the results in a new array.
         
         //your code...
-        const isBelowFive = fivePlus.filter(num => num < 5);
-        console.log(isBelowFive);
-
-
-
-
-
-
+        const fiveAndHigher = fivePlus.filter(num => num > 5);
+        console.log(fiveAndHigher);
+        
+    
 
         // Create an array of 20 randomly generated integers.  Calculate the sum of the elements in the array.
         
